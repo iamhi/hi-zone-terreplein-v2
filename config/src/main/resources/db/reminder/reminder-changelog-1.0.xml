@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd">
+    <changeSet id="1.0_1" author="IamHi">
+        <createTable tableName="reminder_entity">
+            <column name="id" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="reminder_entity_pkey"/>
+            </column>
+
+            <column name="uuid" type="VARCHAR(40)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="content" type="VARCHAR(512)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="time" type="TIMESTAMP WITH TIME ZONE" />
+
+            <column name="location" type="VARCHAR(128)" />
+
+            <column name="type" type="VARCHAR(40)" />
+
+            <column name="status" type="VARCHAR(40)" />
+
+            <column name="complete_type" type="VARCHAR(40)" />
+
+            <column name="complete_comment" type="VARCHAR(255)" />
+
+            <column name="completed_at" type="TIMESTAMP WITH TIME ZONE" />
+
+            <column name="created_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
