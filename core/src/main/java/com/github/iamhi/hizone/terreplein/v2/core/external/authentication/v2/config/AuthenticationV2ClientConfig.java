@@ -17,6 +17,8 @@ public class AuthenticationV2ClientConfig {
 
     AuthenticationV2Paths paths;
 
+    String accessTokenCookieName;
+
     @Data
     public static class AuthenticationV2Paths {
 

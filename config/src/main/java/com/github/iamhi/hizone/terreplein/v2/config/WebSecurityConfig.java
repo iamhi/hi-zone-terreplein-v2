@@ -2,10 +2,6 @@ package com.github.iamhi.hizone.terreplein.v2.config;
 
 import com.github.iamhi.hizone.terreplein.v2.config.providers.HiZoneAuthFilter;
 import com.github.iamhi.hizone.terreplein.v2.config.providers.HiZoneAuthenticationProvider;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
