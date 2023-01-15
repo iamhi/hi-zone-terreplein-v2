@@ -5,7 +5,6 @@ import com.github.iamhi.hizone.terreplein.v2.config.providers.HiZoneAuthenticati
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +25,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
-@OpenAPIDefinition(info = @Info(title = "My API", version = "v1"))
-@SecurityScheme(
-    name = "Authentication v2 access token",
-    type = SecuritySchemeType.HTTP,
-    scheme = "bearer"
-)
 public class WebSecurityConfig {
 
     private static final String[] NOT_AUTHORIZE_PATHS = {

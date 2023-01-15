@@ -23,10 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.github.iamhi.hizone.terreplein.v2.config.SwaggerConfig.SECURITY_SCHEME_NAME;
+
 @RestController
 @RequestMapping("/reminder")
 @RequiredArgsConstructor
-@SecurityRequirement(name = "Authentication v2 access token")
+@SecurityRequirement(name = SECURITY_SCHEME_NAME)
 public class ReminderController {
 
     private final ReminderService reminderService;

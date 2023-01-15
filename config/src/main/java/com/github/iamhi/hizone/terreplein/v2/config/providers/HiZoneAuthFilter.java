@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -41,7 +42,6 @@ public class HiZoneAuthFilter extends OncePerRequestFilter {
             String token = getTokenFromHeader(authorization);
 
             try {
-
                 Authentication authentication = authenticationManager.authenticate(new HiZoneAuthenticationToken(token));
 
                 if (authentication != null) {

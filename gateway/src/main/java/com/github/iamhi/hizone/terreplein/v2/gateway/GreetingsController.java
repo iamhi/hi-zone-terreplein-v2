@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.github.iamhi.hizone.terreplein.v2.config.SwaggerConfig.SECURITY_SCHEME_NAME;
+
 @RestController
 @RequestMapping("/greeting")
 @RequiredArgsConstructor
-@SecurityRequirement(name = "Authentication v2 access token")
+@SecurityRequirement(name = SECURITY_SCHEME_NAME)
 public class GreetingsController {
 
     private final UserContextService userContextService;
