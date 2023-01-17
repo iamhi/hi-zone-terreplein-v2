@@ -1,6 +1,5 @@
 package com.github.iamhi.hizone.terreplein.v2.config.providers;
 
-import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -8,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -43,8 +43,11 @@ public class HiZoneAuthFilter extends OncePerRequestFilter {
     }
 
     private String getTokenFromCookies(Cookie[] cookies) {
+        if (cookies == null) {
+           return StringUtils.EMPTY;
+        }
         return Arrays.stream(cookies).filter(cookie -> ACCESS_TOKEN_COOKIE_NAME.equals(cookie.getName())).findFirst().map(Cookie::getValue)
-            .orElse("");
+            .orElse(StringUtils.EMPTY);
     }
 
     private void createAuthenticationContext(String token) {

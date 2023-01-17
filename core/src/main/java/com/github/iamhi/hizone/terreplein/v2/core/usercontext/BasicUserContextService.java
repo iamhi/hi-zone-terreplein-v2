@@ -2,6 +2,7 @@ package com.github.iamhi.hizone.terreplein.v2.core.usercontext;
 
 import com.github.iamhi.hizone.terreplein.v2.domain.UserContextService;
 import com.github.iamhi.hizone.terreplein.v2.domain.models.UserContext;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,16 @@ class BasicUserContextService implements UserContextService {
         } catch (UserNotAuthenticatedException exception) {
             return ANONYMOUS_LOGIN;
         }
+    }
+
+    @Override
+    public String getUuid() {
+        String uuid = getUserContext().getUuid();
+
+        if (StringUtils.isBlank((uuid))) {
+            throw new UserNotAuthenticatedException();
+        }
+
+        return uuid;
     }
 }

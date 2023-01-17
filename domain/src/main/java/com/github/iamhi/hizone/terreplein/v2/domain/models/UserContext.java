@@ -51,4 +51,12 @@ public class UserContext implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getUuid() {
+        if(userData == null || StringUtils.isBlank(userData.uuid())) {
+            return StringUtils.EMPTY;
+        }
+
+        return userData.uuid();
+    }
 }

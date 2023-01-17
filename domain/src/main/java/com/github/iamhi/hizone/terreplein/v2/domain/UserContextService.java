@@ -4,9 +4,11 @@ import com.github.iamhi.hizone.terreplein.v2.domain.models.UserContext;
 
 public interface UserContextService {
 
-    final String ANONYMOUS_LOGIN = "anonymous";
+    String ANONYMOUS_LOGIN = "anonymous";
 
     UserContext getUserContext();
 
     String getUsername();
+
+    String getUuid();
 }
