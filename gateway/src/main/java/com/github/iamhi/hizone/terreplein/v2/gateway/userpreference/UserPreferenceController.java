@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +31,7 @@ class UserPreferenceController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('basic')")
-    UserPreferenceResponse setUserPreference(UserPreferenceRequest request) {
+    UserPreferenceResponse setUserPreference(@RequestBody UserPreferenceRequest request) {
         return toResponse(userPreferenceService.setUserPreference(toDto(request)));
     }
 
