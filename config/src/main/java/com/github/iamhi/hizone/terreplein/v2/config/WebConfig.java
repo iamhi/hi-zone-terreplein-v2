@@ -53,7 +53,7 @@ public class WebConfig {
                         HttpMethod.DELETE.name(),
                         HttpMethod.PUT.name()
                     )
-                    .allowedOrigins("*");
+                    .allowedOriginPatterns("*");
             }
         };
     }
