@@ -64,17 +64,26 @@ class AuthenticationV2ClientImpl implements AuthenticationV2Client {
             ResponseEntity<DecodeResponse> decodeResponseEntity =
                 reuseTemplate.postForEntity(config.getPaths().getDecode(), decodeRequest, DecodeResponse.class);
 
-            if (decodeResponseEntity.getStatusCode().is4xxClientError()) {
-                refresh();
-                decodeResponseEntity =
-                    reuseTemplate.postForEntity(config.getPaths().getDecode(), decodeRequest, DecodeResponse.class);
-            }
-
             if (decodeResponseEntity.getStatusCode().is2xxSuccessful()) {
                 return toUserData(Objects.requireNonNull(decodeResponseEntity.getBody()), token);
             }
         } catch (HttpClientErrorException exception) {
             log.info(exception.getMessage());
+            log.info("Refreshing tokens and retying");
+
+            refresh();
+
+            try {
+                DecodeRequest decodeRequest = new DecodeRequest(token);
+                ResponseEntity<DecodeResponse> decodeResponseEntity =
+                    reuseTemplate.postForEntity(config.getPaths().getDecode(), decodeRequest, DecodeResponse.class);
+
+                if (decodeResponseEntity.getStatusCode().is2xxSuccessful()) {
+                    return toUserData(Objects.requireNonNull(decodeResponseEntity.getBody()), token);
+                }
+            } catch(HttpClientErrorException exceptionInner) {
+                log.error("Unable to access authentication service");
+            }
         }
 
         throw new UnableToDecodeException();
