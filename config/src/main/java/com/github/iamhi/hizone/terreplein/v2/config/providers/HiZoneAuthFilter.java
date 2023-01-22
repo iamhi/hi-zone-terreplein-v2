@@ -46,7 +46,8 @@ public class HiZoneAuthFilter extends OncePerRequestFilter {
         if (cookies == null) {
            return StringUtils.EMPTY;
         }
-        return Arrays.stream(cookies).filter(cookie -> ACCESS_TOKEN_COOKIE_NAME.equals(cookie.getName())).findFirst().map(Cookie::getValue)
+        return Arrays.stream(cookies).filter(cookie -> ACCESS_TOKEN_COOKIE_NAME.equals(cookie.getName()))
+            .findFirst().map(Cookie::getValue)
             .orElse(StringUtils.EMPTY);
     }
 

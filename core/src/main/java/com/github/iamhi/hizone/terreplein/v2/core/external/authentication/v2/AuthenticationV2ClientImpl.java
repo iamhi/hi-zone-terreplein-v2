@@ -64,6 +64,12 @@ class AuthenticationV2ClientImpl implements AuthenticationV2Client {
             ResponseEntity<DecodeResponse> decodeResponseEntity =
                 reuseTemplate.postForEntity(config.getPaths().getDecode(), decodeRequest, DecodeResponse.class);
 
+            if (decodeResponseEntity.getStatusCode().is4xxClientError()) {
+                refresh();
+                decodeResponseEntity =
+                    reuseTemplate.postForEntity(config.getPaths().getDecode(), decodeRequest, DecodeResponse.class);
+            }
+
             if (decodeResponseEntity.getStatusCode().is2xxSuccessful()) {
                 return toUserData(Objects.requireNonNull(decodeResponseEntity.getBody()), token);
             }
