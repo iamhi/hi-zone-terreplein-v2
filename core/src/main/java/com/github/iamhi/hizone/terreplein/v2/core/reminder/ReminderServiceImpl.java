@@ -10,6 +10,7 @@ import com.github.iamhi.hizone.terreplein.v2.domain.models.reminder.ReminderComp
 import com.github.iamhi.hizone.terreplein.v2.domain.models.reminder.ReminderStatusType;
 import com.github.iamhi.hizone.terreplein.v2.domain.models.reminder.ReminderType;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -112,7 +113,7 @@ record ReminderServiceImpl(
 
     private BiFunction<Reminder, ReminderEntity, ReminderEntity> merge() {
         return (reminder, reminderEntity) -> {
-            ReminderEntity clone = ObjectUtils.cloneIfPossible(reminderEntity);
+            ReminderEntity clone = SerializationUtils.clone(reminderEntity);
 
             clone.setContent(StringUtils.defaultString(StringUtils.defaultString(reminder.content(), reminderEntity.getContent())));
             clone.setTime(ObjectUtils.defaultIfNull(reminder.time(), reminderEntity.getTime()));

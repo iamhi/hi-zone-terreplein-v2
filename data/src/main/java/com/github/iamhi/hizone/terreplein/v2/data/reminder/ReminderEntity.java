@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.Instant;
 
 @Getter
@@ -19,7 +20,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @Table(name = "reminder_entity")
 @Entity
-public class ReminderEntity implements Cloneable {
+public class ReminderEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
