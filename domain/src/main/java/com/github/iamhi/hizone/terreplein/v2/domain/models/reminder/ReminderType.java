@@ -3,10 +3,10 @@ package com.github.iamhi.hizone.terreplein.v2.domain.models.reminder;
 import java.util.Arrays;
 
 public enum ReminderType {
-    COMPLETE_BY_TIME("createByTime"),
-    COMPLETE_AT_TIME("createAtTime"),
-    COMPLETE_AFTER_TIME("createAfterTime"),
-    COMPLETE_AT_ANY_TIME("createAtAnyTime");
+    COMPLETE_BY_TIME("completeByTime"),
+    COMPLETE_AT_TIME("completeAtTime"),
+    COMPLETE_AFTER_TIME("completeAfterTime"),
+    COMPLETE_AT_ANY_TIME("completeAtAnyTime");
 
     public final String value;
 
