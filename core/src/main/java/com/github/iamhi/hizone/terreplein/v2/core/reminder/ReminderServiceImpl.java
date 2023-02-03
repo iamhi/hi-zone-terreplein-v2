@@ -67,7 +67,7 @@ record ReminderServiceImpl(
 
     @Override
     public List<Reminder> get() {
-        return repository.findByCreatedBy(userContextService.getUsername()).stream()
+        return repository.findByCreatedByOrderByStatusAscCreatedAtDesc(userContextService.getUsername()).stream()
             .map(ReminderMapper::map)
             .map(adjustStatus())
             .toList();
