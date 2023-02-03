@@ -10,4 +10,6 @@ public interface ReminderRepository extends CrudRepository<ReminderEntity, Integ
     Optional<ReminderEntity> findByUuid(String uuid);
 
     List<ReminderEntity> findByCreatedBy(String createdBy);
+
+    List<ReminderEntity> findByCreatedByOrderByStatusAscCreatedAtDesc(String createdBy);
 }

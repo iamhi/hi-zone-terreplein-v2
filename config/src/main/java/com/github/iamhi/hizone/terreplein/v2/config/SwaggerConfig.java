@@ -19,6 +19,10 @@ import static com.github.iamhi.hizone.terreplein.v2.config.SwaggerConfig.SECURIT
         @Server(
             url = "http://api.ibeenhi.com/hi-zone-api/terreplein-v2",
             description = "Http variant"
+        ),
+        @Server(
+            url = "http://localhost:8088/hi-zone-api/terreplein-v2",
+            description = "Local variant"
         )
     })
 @SecurityScheme(
