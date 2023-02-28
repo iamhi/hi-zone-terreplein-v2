@@ -35,4 +35,7 @@ public class UserPreferenceEntity {
 
     @Column(name = "reminders_activated")
     Boolean remindersActivated;
+
+    @Column(name = "cloudy_memory_activated")
+    Boolean cloudyMemoryActivated;
 }

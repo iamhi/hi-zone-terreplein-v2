@@ -2,7 +2,9 @@
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd">
-
-    <include file="classpath:db/userpreference/user-preference-changelog-1.0.xml"/>
-    <include file="classpath:db/userpreference/user-preference-changelog-1.1.xml"/>
+    <changeSet id="1.0_1" author="IamHi">
+        <addColumn tableName="user_preference_entity">
+            <column name="cloudy_memory_activated" type="BOOLEAN" defaultValue="false"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

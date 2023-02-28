@@ -19,6 +19,7 @@ record UserPreferenceServiceImpl(
         return repository.findByCreatedBy(userContextService.getUuid()).stream().findFirst().map(this::toDto).orElseGet(() ->
            setUserPreference(new UserPreference(
                true,
+               false,
                false
            ))
         );
@@ -37,14 +38,16 @@ record UserPreferenceServiceImpl(
                 UUID.randomUUID().toString(),
                 userContextService.getUuid(),
                 userPreference.feedbackActivated(),
-               userPreference.remindersActivated()
+                userPreference.remindersActivated(),
+                userPreference.cloudyMemoryActivated()
             ))));
     }
 
     private UserPreference toDto(UserPreferenceEntity entity) {
         return new UserPreference(
             entity.getFeedbackActivated(),
-            entity.getRemindersActivated()
+            entity.getRemindersActivated(),
+            entity.getCloudyMemoryActivated()
         );
     }
 }

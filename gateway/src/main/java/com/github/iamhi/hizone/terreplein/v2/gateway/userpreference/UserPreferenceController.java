@@ -38,14 +38,16 @@ class UserPreferenceController {
     private UserPreferenceResponse toResponse(UserPreference userPreference) {
         return new UserPreferenceResponse(
             userPreference.feedbackActivated(),
-            userPreference.remindersActivated()
+            userPreference.remindersActivated(),
+            userPreference.cloudyMemoryActivated()
         );
     }
 
     private UserPreference toDto(UserPreferenceRequest request) {
         return new UserPreference(
             request.feedbackActivated(),
-            request.remindersActivated()
+            request.remindersActivated(),
+            request.cloudyMemoryActivated()
         );
     }
 }
