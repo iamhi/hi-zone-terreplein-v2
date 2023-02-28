@@ -31,6 +31,7 @@ record UserPreferenceServiceImpl(
             .stream().findFirst().map(entity -> {
                 entity.setFeedbackActivated(userPreference.feedbackActivated());
                 entity.setRemindersActivated(userPreference.remindersActivated());
+                entity.setCloudyMemoryActivated(userPreference.cloudyMemoryActivated());
 
                 return entity;
             }).orElse(new UserPreferenceEntity(
